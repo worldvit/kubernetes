@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-shopping
+  labels:
+    name: shopping
+spec:
+  containers:
+  - image: nginx:1.14
+    name: shopping
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-shopping
+spec:
+  selector:
+    name: shopping
+  ports:
+  - port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-customer
+  labels:
+    name: customer
+spec:
+  containers:
+  - image: nginx:1.14
+    name: customer
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-customer
+spec:
+  selector:
+    name: customer
+  ports:
+  - port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-order
+  labels:
+    name: order
+spec:
+  containers:
+  - image: nginx:1.14
+    name: order
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-order
+spec:
+  selector:
+    name: order
+  ports:
+  - port: 8080
