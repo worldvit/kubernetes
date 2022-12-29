@@ -11,7 +11,7 @@ spec:
   revisionHistoryLimit: 10 # history 제한
   strategy:
     rollingUpdate:
-      maxSurge: 50% #현 replica 3 + round((3*0.5)) = 최대 5개
+      maxSurge: 25% #현 replica 3에 새것이 한개씩 round((3*0.25)
       maxUnavailable: 50% #Terminating 갯수 조절
     type: RollingUpdate
   template:
